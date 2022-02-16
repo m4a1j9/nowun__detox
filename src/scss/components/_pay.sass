@@ -1,0 +1,228 @@
+.pay
+    @extend %section
+
+    position: relative
+    .sectPay
+        transition: .5s
+
+        .section__title
+            h4
+                font-weight: normal
+                font-size: 26px
+                line-height: 34px
+                text-align: center
+        .sectPay__imgCards
+            margin-top: 26px
+            margin-bottom: 22px
+            height: 22px
+            background: url('../img/icons/cards.webp') 50% 50%/contain no-repeat
+
+        .sectPay__cards // поля
+            .sectPay__card // номер
+                .sectPay__numb
+                    margin-right: 5px
+                    margin-left: 5px
+                    p
+                        font-size: 16px
+                        line-height: 21px
+                        color: #978D7C
+                        text-align: center
+                        margin-bottom: 5px
+                    .numb-inp // поле вводы
+                        width: 100%
+                        height: 60px
+                        background: #fff
+                        border: none
+                        box-sizing: border-box
+                        border-radius: 10px
+                        font-style: normal
+                        text-align: center
+                        font-size: 16px
+                        line-height: 28px
+                        margin-bottom: 7px
+                        &::-webkit-input-placeholder
+                            color: rgba(0, 0, 0, 0.25)
+                            font-size: 16px
+                            line-height: 20px
+                            // transform: translateY(7px)
+                        &::-moz-placeholder
+                            color: rgba(0, 0, 0, 0.25)
+                            font-size: 16px
+                            line-height: 20px
+                            // padding-top: 15px
+                .sectPay__center
+                    margin-right: 5px
+                    margin-left: 5px
+                    display: flex
+                    justify-content: space-between
+                    align-items: end
+                    margin-bottom: 9px
+                    border-radius: 30px
+                    .my
+                        width: 49%
+                        p
+                            font-size: 16px
+                            line-height: 21px
+                            color: #978D7C
+                            text-align: center
+                            margin-bottom: 5px
+                        .inputMY
+                            display: flex
+                            justify-content: center
+
+                            width: 100%
+                            height: 60px
+                            background: #fff
+                            border: none
+                            box-sizing: border-box
+                            border-radius: 10px
+                            .month-inp
+                                width: 36px
+                                border: none
+                                background: #fff
+                                text-align: center
+                                font-style: normal
+                                font-size: 16px
+                                line-height: 28px
+                                border-radius: 50%
+                            span
+                                padding-top: 15px
+                                font-style: normal
+                                font-weight: 300
+                                font-size: 16px
+                                line-height: 27px
+                                margin-left: 5px
+                            .year-inp
+                                width: 30px
+                                border: none
+                                background: #fff
+                                text-align: center
+                                font-style: normal
+                                font-size: 16px
+                                line-height: 28px
+                    .cvv
+                        width: 49%
+                        p
+                            font-size: 16px
+                            line-height: 21px
+                            color: #978D7C
+                            text-align: center
+                            margin-bottom: 5px
+                        .cvv-inp
+                            width: 100%
+                            height: 60px
+
+                            background: #fff
+                            border: none
+                            box-sizing: border-box
+                            border-radius: 10px
+
+                            font-style: normal
+                            font-size: 16px
+                            line-height: 28px
+                            text-align: center
+                .sectPay__name
+                    margin-right: 5px
+                    margin-left: 5px
+                    p
+                        font-size: 16px
+                        line-height: 21px
+                        color: #978D7C
+                        text-align: center
+                        margin-bottom: 5px
+                    .name-inp
+                        width: 100%
+                        height: 60px
+                        background: #fff
+                        border: none
+                        box-sizing: border-box
+                        border-radius: 10px
+                        font-style: normal
+                        font-size: 16px
+                        line-height: 28px
+                        padding-left: 20px
+        .content__container-checkbox
+            @include adaptiv-value2('width',500,320,1)
+            display: flex
+            flex-direction: row
+            justify-content: center
+            .checkbox
+                width: 290px
+                margin-top: 20px
+                /* для элемента input c type="checkbox" */
+                .custom-checkbox
+                    position: absolute
+                    z-index: -1
+                    opacity: 0
+                    width: 20px
+                    height: 20px
+                    /* для элемента label, связанного с .custom-checkbox */
+                    &+label
+                        align-items: center
+                        user-select: none
+                        font-size: 16px
+                        line-height: 21px
+                        color: #978D7C
+                        display: flex
+                        flex-direction: row
+                        align-items: start
+                        a
+                            color: #978D7C
+                    /* создание в label псевдоэлемента before со следующими стилями */
+                    &+label::before
+                        content: ''
+                        width: 20px
+                        height: 20px
+                        flex-shrink: 0
+                        flex-grow: 0
+                        border: 1px solid #55322C
+                        box-sizing: border-box
+                        margin-right: 14px
+                        margin-top: 5px
+                        background-repeat: no-repeat
+                        background-position: center center
+                        background-size: 50% 50%
+                    /* стили для чекбокса, находящегося в состоянии checked */
+                    &:checked+label::before
+                        background: url("../img/check_mark2.png") 50% 50%/60% 50% no-repeat
+
+        .sectPay__btn
+            display: flex
+            justify-content: center
+            .content-button
+                width: 310px
+                height: 70px
+                margin-top: 40px
+                background: #75C94E
+                border: none
+                border-radius: 10px
+                box-shadow: 20px 24px 34px rgba(0, 0, 0, 0.15), inset -4px -4px 0px rgba(86, 170, 45, 0.5)
+                transition: all 0.1s
+                &:hover
+                    background: #64C038
+                    box-shadow: 4px 8px 14px rgba(0, 0, 0, 0.15), inset -4px -4px 0px rgba(86, 170, 45, 0.5)
+                p
+                    color: #fff
+                    font-weight: bold
+                    font-size: 24px
+                    line-height: 28px
+
+    .test__buttonB
+        width: 30px
+        height: 30px
+
+        background: url('../img/icons/cancel.webp') 0 0/cover no-repeat
+
+        position: absolute
+        top: -70px
+        right: 0
+
+        min-height: 0
+        margin: 0
+
+        border: none
+        box-shadow: none
+        border-radius: none
+        &:hover
+            background: url('../img/icons/cancel.webp') 0 0/cover no-repeat
+            box-shadow: none

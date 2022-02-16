@@ -1,0 +1,107 @@
+html
+    // overflow-x: hidden
+
+main
+    width: 100vw
+    min-height: 100vh
+    //min-height: 1080px
+    position: relative
+
+
+.green
+    color: #56AA2D
+
+
+.container
+    display: flex
+    justify-content: center
+    align-items: center
+
+    flex-direction: column
+
+    // overflow-x: hidden
+.bg
+    position: absolute
+
+    width: 100%
+    height: 100%
+
+    pointer-events: none
+
+    background: #FAFAF0
+
+    z-index: -10
+
+    overflow: hidden
+    .bg__top
+        position: absolute
+        top: 0
+
+        width: 100%
+        min-width: 650px
+    .bg__bottom
+        position: absolute
+        bottom: 0
+
+        width: 100%
+        min-width: 650px
+
+.static-top
+    display: none //! none
+    flex-direction: column
+    align-items: center
+    .static-top__logo
+        @include adaptiv-value2('width',303,187,1)
+        @include adaptiv-value2('height',58,42,1)
+        background: url('../img/logo.webp') 50% 0/contain no-repeat
+        margin-top: 27px
+        margin-bottom: 30px
+    .static-top__progress
+        @include adaptiv-value2('width',600,310,1)
+        height: 10px
+
+        background: rgba(255, 192, 29, 0.2)
+
+        border-radius: 30px
+        margin-bottom: 16px
+        &::-webkit-progress-bar
+            background: rgba(255, 192, 29, 0.2)
+
+            transition: 0.3s
+        &::-webkit-progress-value
+            background: #FF891D
+            border-radius: 30px
+
+            transition: 0.3s
+        &::-moz-progress-bar
+            background: #FF891D
+            border-radius: 30px
+
+            transition: 0.3s
+    &._show
+        display: flex
+.static-bottom
+    width: 100vw
+
+    display: none
+    flex-direction: column
+
+    position: absolute
+    bottom: 0
+
+    margin: 0 auto
+    margin-bottom: 26px
+    .static-bottom__top
+        font-size: 16px
+        line-height: 26px
+        text-align: center
+        color: #56AA2D
+    .static-bottom__bottom
+        font-size: 16px
+        line-height: 26px
+        text-align: center
+        a
+            color: #56AA2D
+
+    &._show
+        display: flex
