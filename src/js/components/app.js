@@ -257,10 +257,7 @@ for (let index = 0; index < sections.length; index++) {
             section.classList.remove('_show');
 
             if (index !== 19) {
-
-                try {
-                    sectionNext.classList.add('_show')
-                } catch (error) { }
+                sectionNext.classList.add('_show')
             }
 
             localStorage.setItem('progress', (+index + 1));

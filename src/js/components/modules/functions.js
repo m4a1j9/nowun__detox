@@ -257,7 +257,7 @@ export function loaderStart(contactsMainPage) {
     setTimeout(() => {
         if (loaderWidth = 100) {
             loader.style.display = 'none';
-            contactsMainPage.style.display = 'flex';
+            contactsMainPage.classList.add('_show');
             // setTimeout(function () {
             // }, 400);
         }

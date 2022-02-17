@@ -46,7 +46,9 @@ const paths = {
     srcSass: `${srcFolder}/scss/**/*.sass`,
     buildCssFolder: `${buildFolder}/css`,
     srcFullJs: `${srcFolder}/js/**/*.js`,
+    srcFullJs2: `${srcFolder}/js/**/*.js`,
     srcMainJs: `${srcFolder}/js/main.js`,
+    // srcMainJs2: `${srcFolder}/js/main2.js`,
     buildJsFolder: `${buildFolder}/js`,
     srcPartialsFolder: `${srcFolder}/partials`,
     resourcesFolder: `${srcFolder}/resources`,
@@ -211,6 +213,45 @@ const scripts = () => {
         .pipe(browserSync.stream());
 }
 
+// const scripts2 = () => {
+//     return src(paths.srcMainJs2)
+//         .pipe(plumber(
+//             notify.onError({
+//                 title: "JS",
+//                 message: "Error: <%= error.message %>"
+//             })
+//         ))
+//         .pipe(webpackStream({
+//             mode: isProd ? 'production' : 'development',
+//             output: {
+//                 filename: 'main2.js',
+//             },
+//             module: {
+//                 rules: [{
+//                     test: /\.m?js$/,
+//                     exclude: /node_modules/,
+//                     use: {
+//                         loader: 'babel-loader',
+//                         options: {
+//                             presets: [
+//                                 ['@babel/preset-env', {
+//                                     targets: "defaults"
+//                                 }]
+//                             ]
+//                         }
+//                     }
+//                 }]
+//             },
+//             devtool: !isProd ? 'source-map' : false
+//         }))
+//         .on('error', function (err) {
+//             console.error('WEBPACK ERROR', err);
+//             this.emit('end');
+//         })
+//         .pipe(dest(paths.buildJsFolder))
+//         .pipe(browserSync.stream());
+// }
+
 // scripts backend
 const scriptsBackend = () => {
     return src(paths.srcMainJs)
@@ -295,25 +336,6 @@ const htmlInclude = () => {
         .pipe(browserSync.stream());
 }
 
-const watchFiles = () => {
-    browserSync.init({
-        server: {
-            baseDir: `${buildFolder}`
-        },
-    });
-
-    watch(paths.srcScss, styles);
-    watch(paths.srcSass, styles);
-    watch(paths.srcFullJs, scripts);
-    watch(`${paths.srcPartialsFolder}/*.html`, htmlInclude);
-    watch(`${srcFolder}/*.html`, htmlInclude);
-    watch(`${paths.resourcesFolder}/**`, resources);
-    watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`, images);
-    watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, webpImages);
-    // watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, avifImages);
-    watch(paths.srcSvg, svgSprites);
-}
-
 const cache = () => {
     return src(`${buildFolder}/**/*.{css,js,svg,png,jpg,jpeg,webp,avif,woff2}`, {
         base: buildFolder
@@ -365,11 +387,31 @@ const toProd = (done) => {
     done();
 };
 
-exports.default = series(clean, htmlInclude, scripts, styles, stylesSASS, resources, images, webpImages, /* avifImages, */ svgSprites, watchFiles);
+const watchFiles = () => {
+    browserSync.init({
+        server: {
+            baseDir: `${buildFolder}`
+        },
+    });
 
-exports.backend = series(clean, htmlInclude, scriptsBackend, stylesBackend, stylesBackendSASS, resources, images, webpImages, /* avifImages, */ svgSprites)
+    watch(paths.srcScss, styles);
+    watch(paths.srcSass, styles);
+    watch(paths.srcFullJs, scripts);
+    // watch(paths.srcFullJs2, scripts2);
+    watch(`${paths.srcPartialsFolder}/*.html`, htmlInclude);
+    watch(`${srcFolder}/*.html`, htmlInclude);
+    watch(`${paths.resourcesFolder}/**`, resources);
+    watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`, images);
+    watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, webpImages);
+    // watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, avifImages);
+    watch(paths.srcSvg, svgSprites);
+}
 
-exports.build = series(toProd, clean, htmlInclude, scripts, styles, stylesSASS, resources, images, webpImages, /* avifImages, */ svgSprites, htmlMinify);
+exports.default = series(clean, htmlInclude, scripts, styles, stylesSASS, resources, images, webpImages, svgSprites, watchFiles);
+
+exports.backend = series(clean, htmlInclude, scriptsBackend, stylesBackend, stylesBackendSASS, resources, images, webpImages, svgSprites)
+
+exports.build = series(toProd, clean, htmlInclude, scripts, styles, stylesSASS, resources, images, webpImages, svgSprites, htmlMinify);
 
 exports.cache = series(cache, rewrite);
 
