@@ -7,13 +7,13 @@
         <div class="sectPay__cards">
             <form action="#" name="validation" id="validation" class="sectPay__card">
                 <div class="sectPay__numb">
-                    <p> Card details </p><input class="numb-inp" maxlength="19"
+                    <p> Karta </p><input class="numb-inp" maxlength="19"
                         placeholder="1 2 3 4  1 2 3 4  1 2 3 4  1 2 3 4" type="tel"
                         onclick="dataLayer.push({                            'event' : 'input_cardnumber',                            'category' : 'quiz pay',                            'action' : 'click',                            'label' : 'input_cardnumber'                         });">
                 </div>
                 <div class="sectPay__center">
                     <div class="my">
-                        <p> Validity date expiration date </p>
+                        <p> MM / YY </p>
                         <div class="inputMY"><input class="month-inp" placeholder="*MM" type="tel" maxlength="2"
                                 onclick="dataLayer.push({                                    'event' : 'input_mm',                                    'category' : 'quiz pay',                                    'action' : 'click',                                    'label' : 'input_mm'                                 });">
                             <span> / </span><input class="year-inp" placeholder="*YY" type="tel" maxlength="2"
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="sectPay__name">
-                    <p> Cardholder&#039;s name </p><input class="name-inp" placeholder="*MARIA NOVAK" type="text"
+                    <p> Name on card </p><input class="name-inp" placeholder="*MARIA NOVAK" type="text"
                         onclick="dataLayer.push({                            'event' : 'input_name',                            'category' : 'quiz pay',                            'action' : 'click',                            'label' : 'input_name'                         });">
                 </div>
             </form>
