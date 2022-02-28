@@ -93,7 +93,7 @@ for (let index = 0; index < sections.length; index++) {
 
                     setTimeout(() => {
                         test__uncorrect.classList.add('_active');
-                    }, 2000);
+                    }, 1000);
 
                     for (const button of buttons) {
                         button.disabled = true;
@@ -102,6 +102,8 @@ for (let index = 0; index < sections.length; index++) {
                 } else {
 
                     test__uncorrect.classList.remove('_active');
+
+                    localStorage.setItem('email', input.value)
                     for (const button of buttons) {
                         button.disabled = false;
                     }
@@ -251,7 +253,9 @@ for (let index = 0; index < sections.length; index++) {
                 modalElem.classList.add('_active');
                 overlay.classList.add('_active');
 
-                localStorage.clear();
+                setTimeout(() => {
+                    localStorage.clear();
+                }, 5000);
 
             }
             section.classList.remove('_show');

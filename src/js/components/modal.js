@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
             modalElem.classList.add('_active');
             overlay.classList.add('_active');
 
-            localStorage.clear();
+            // localStorage.clear();
         }); // end click
 
     }); // end foreach
