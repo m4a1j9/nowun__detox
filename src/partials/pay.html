@@ -1,108 +1,99 @@
 <section class="pay">
     <div class="section sectPay">
         <div class="section__title">
-            <h4>
-                Чтобы получить доступ к курсу,
-                <br>
-                введите данные карты
-            </h4>
+            <h4> Чтобы получить доступ к курсу, <br> введите данные карты </h4>
         </div>
-        <div class="sectPay__imgCards">
-        </div>
+        <div class="sectPay__imgCards"></div>
         <div class="sectPay__cards">
             <form action="#" name="validation" id="validation" class="sectPay__card">
-                <div class="sectPay__numb">
+                <div>
                     <p>
                         Данные карты
                     </p>
-                    <input class="numb-inp" maxlength="19" placeholder="* * * *    * * * *    * * * *    * * * *" type="tel"
-                        onclick="dataLayer.push({
-                            'event' : 'input_cardnumber',
-                            'category' : 'quiz pay',
-                            'action' : 'click',
-                            'label' : 'input_cardnumber'
-                         });">
+                    <div id="card-element" class="StripeElement StripeElement--empty form-payment__number cardHolder"></div>
                 </div>
                 <div class="sectPay__center">
-                    <div class="my">
+                    <div class="sectPay__wrap">
                         <p>
-                            Дата истечения срока действия
+                            MM / DD
                         </p>
-                        <div class="inputMY">
-                            <input class="month-inp" placeholder="*ММ " type="tel" maxlength="2" onclick="dataLayer.push({
-                                    'event' : 'input_mm',
-                                    'category' : 'quiz pay',
-                                    'action' : 'click',
-                                    'label' : 'input_mm'
-                                 });">
-                            <span> / </span>
-                            <input class="year-inp" placeholder=" *ГГ" type="tel" maxlength="2" onclick="dataLayer.push({
-                                    'event' : 'input_yy',
-                                    'category' : 'quiz pay',
-                                    'action' : 'click',
-                                    'label' : 'input_yy'
-                                 });">
-                        </div>
+                        <div id="card-element2" class="StripeElement StripeElement--empty form-payment__date"></div>
                     </div>
-                    <div class="cvv">
+                    <div class="sectPay__wrap">
                         <p>
-                            CVC/CVV
+                            CVC / CVV
                         </p>
-                        <input class="cvv-inp" placeholder="*CVC / CVV" type="tel" maxlength="3" onclick="dataLayer.push({
-                                'event' : 'input_cvc',
-                                'category' : 'quiz pay',
-                                'action' : 'click',
-                                'label' : 'input_cvc'
-                             });">
+                        <div id="card-element3" class="StripeElement StripeElement--empty form-payment__cvv"></div>
                     </div>
                 </div>
                 <div class="sectPay__name">
-                    <p>
-                        Имя владельца карты
-                    </p>
-                    <input class="name-inp" placeholder="*MARIA NOVAK" type="text" onclick="dataLayer.push({
+                    <p> Имя владельца карты </p><input class="name-inp cardHolder stripe-button" placeholder="*MARIA NOVAK" type="text"
+                        onclick="
+                        dataLayer.push({
                             'event' : 'input_name',
                             'category' : 'quiz pay',
                             'action' : 'click',
                             'label' : 'input_name'
-                         });">
+                        });
+                        ">
                 </div>
             </form>
         </div>
         <!--                     <div class="section1__check">
-            <div class="check">
-                <input type="checkbox" name="radPay" id="radPay" class="rad1 radPay">
-                <label for="radPay">Я принимаю <a href="#">Условия обслуживания</a> и <a href="#">Политику
-                        конфиденциальности</a>.</label>
-            </div>
-        </div> -->
-
+<div class="check">
+    <input type="checkbox" name="radPay" id="radPay" class="rad1 radPay">
+    <label for="radPay">Я принимаю <a href="#">Условия обслуживания</a> и <a href="#">Политику
+            конфиденциальности</a>.</label>
+</div>
+</div> -->
         <!--                     <div class="content__container-checkbox section1__check">
-            <div class="checkbox content-check check">
-                <input class="custom-checkbox rad1 radPay" type="checkbox" name="radPay" id="radPay">
-                <label for="radPay" id="PrivacyPolicy">
-                    Я принимаю Условия обслуживания и Политику конфиденциальности.
-                </label>
-            </div>
-        </div> -->
+<div class="checkbox content-check check">
+    <input class="custom-checkbox rad1 radPay" type="checkbox" name="radPay" id="radPay">
+    <label for="radPay" id="PrivacyPolicy">
+        Я принимаю Условия обслуживания и Политику конфиденциальности.
+    </label>
+</div>
+</div> -->
+        <div id="payment-request-button-apple"></div>
+        <div id="payment-request-button"></div>
+
         <div class="sectPay__btn">
-            <button class="btn-pay content-button" onclick="dataLayer.push({
-                    'event' : 'Subscribe',
-                    'category' : 'quiz pay',
-                    'action' : 'click',
-                    'label' : 'Subscribe'
-                 });">
-                <p>
-                    Оплатить
-                </p>
-            </button>
-            <!-- <p class="cansel">Отменить <span class="br"></span> оплату</p> -->
+            <button
+                class="btn-pay content-button"
+                onclick="
+                    dataLayer.push({
+                        'event' : 'Subscribe',
+                        'category' : 'quiz pay',
+                        'action' : 'click',
+                        'label' : 'Subscribe'
+                    });
+                    onPayClick();
+                    "
+                >
+                <p> Оплатить </p>
+            </button><!-- <p class="cansel">Отменить <span class="br"></span> оплату</p> -->
+        </div>
+        <div id="card-errors" style="height: 20px;"></div>
+
+        <div class="wrapper-loader" style="margin-top: 20px;">
+            <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
         <!-- <div class="sectPay__desc">
-            <p>  Pokud máte otázky nebo nějaký problém - napište mi:  </p>
-            <p>support@nowun.online</p>
-        </div> -->
-    </div>
-
-    <!-- <button class="test__buttonB"></button> -->
+<p>  Pokud máte otázky nebo nějaký problém - napište mi:  </p>
+<p>support@nowun.online</p>
+</div> -->
+    </div><!-- <button class="test__buttonB"></button> -->
 </section>

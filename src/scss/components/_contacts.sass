@@ -45,12 +45,16 @@
         @extend %inputText
 
     .test__uncorrect
-        display: none
+        margin-top: 5px
+        visibility: hidden
 
         color: red
 
+        transform: scale(0)
+        transition: .3s
         &._active
-            display: block
+            visibility: visible
+            transform: scale(1)
 
 .test__button
     @extend %button

@@ -9,7 +9,7 @@ let cardElement2;
 let cardElement3;
 
 const stripe = Stripe(PUBLISHABLE_KEY, {
-    locale: 'cs',
+    locale: 'ru',
     apiVersion: '2020-08-27',
 });
 
@@ -159,11 +159,11 @@ paymentBtn.forEach((item) => {
 
 // создаем объект запроса платежа
 var paymentRequest = stripe.paymentRequest({
-    country: 'CZ',
-    currency: 'czk',
+    country: 'US',
+    currency: 'usd',
     total: {
         label: 'SKIN RESTART',
-        amount: 1999,
+        amount: 99,
     },
     requestPayerEmail: true,
 });
