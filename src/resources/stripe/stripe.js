@@ -2,7 +2,7 @@ const bodyElem = document.querySelector('body');
 const stripePopupElem = document.getElementById('stripe');
 const stripeBtn = document.querySelector('.stripe-button');
 const PUBLISHABLE_KEY =
-    'pk_test_51IsNCwLBx5miI8AdCWt5J1FhYZ2UmGgbM3RF2ysUGZZWMHuMEcbUN109480eC4Pfwirsv6LDCx59pcaFrT3iJaQk00c1d0A68w';
+    'pk_live_PnXRLRwVcPBYyoaAWWaEJxDK00Fq7wGY8a';
 
 let cardElement;
 let cardElement2;
@@ -74,9 +74,9 @@ const stripe = Stripe(PUBLISHABLE_KEY, {
 
 async function onPayClick() {
     stripeBtn.disabled = true;
-    document.querySelector('.wrapper-loader').css('display', 'flex');
+    // document.querySelector('.wrapper-loader').style.cssText = `display: flex;`;
     try {
-        const response = await fetch('stripe.php', {
+        const response = await fetch('stripe/stripe.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,9 +90,7 @@ async function onPayClick() {
                         payment_method: {
                             card: cardElement,
                             billing_details: {
-                                name: `${localStorage.getItem('name')}`,
                                 email: `${localStorage.getItem('email')}`,
-                                phone: `${localStorage.getItem('phone')}`,
                             },
                         },
                     })
@@ -111,6 +109,7 @@ async function onPayClick() {
 
                         setTimeout(() => {
                             window.location.href = 'thanks.html';
+                            localStorage.clear()
                         }, 10000);
                     }),
             );
@@ -160,11 +159,11 @@ paymentBtn.forEach((item) => {
 
 // создаем объект запроса платежа
 var paymentRequest = stripe.paymentRequest({
-    country: 'US',
-    currency: 'usd',
+    country: 'CZ',
+    currency: 'czk',
     total: {
         label: 'SKIN RESTART',
-        amount: 99,
+        amount: 1999,
     },
     requestPayerEmail: true,
 });
@@ -207,7 +206,7 @@ paymentRequest.canMakePayment().then(function (result) {
 async function quizCheckoutPayment(paymentMethod) {
     console.log(paymentMethod);
 
-    let response = await fetch('stripe.php', {
+    let response = await fetch('stripe/stripe.php', {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({
@@ -228,8 +227,8 @@ async function quizCheckoutPayment(paymentMethod) {
 }
 
 paymentRequest.on('paymentmethod', async function (ev) {
-    document.querySelector('.wrapper-loader').css('display', 'flex');
-    const response = await fetch('stripe.php', {
+    // document.querySelector('.wrapper-loader').style.cssText = `display: flex;`;
+    const response = await fetch('stripe/stripe.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -247,9 +246,7 @@ paymentRequest.on('paymentmethod', async function (ev) {
                     { payment_method: ev.paymentMethod.id },
                     {
                         billing_details: {
-                            name: `${localStorage.getItem('name')}`,
                             email: `${localStorage.getItem('email')}`,
-                            phone: `${localStorage.getItem('phone')}`,
                         },
                     },
                     { handleActions: false },
@@ -268,6 +265,7 @@ paymentRequest.on('paymentmethod', async function (ev) {
 
                         setTimeout(() => {
                             window.location.href = 'thanks.html';
+                            localStorage.clear()
                         }, 10000);
 
                         // Check if the PaymentIntent requires any actions and if so let Stripe.js

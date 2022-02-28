@@ -6,29 +6,36 @@
         <div class="sectPay__imgCards"></div>
         <div class="sectPay__cards">
             <form action="#" name="validation" id="validation" class="sectPay__card">
-                <div id="card-element" class="StripeElement StripeElement--empty form-payment__number cardHolder" style="font-size: .8rem;
-                        width: 100%;
-                        border: 1px solid #D6D7D8;
-                        padding: 0.625rem;
-                        background-color: #F9F9FA;
-                        margin-bottom: 10px;
-                        letter-spacing: 1px;">
+                <div>
+                    <p>
+                        Karta
+                    </p>
+                    <div id="card-element" class="StripeElement StripeElement--empty form-payment__number cardHolder"></div>
                 </div>
                 <div class="sectPay__center">
-                    <div id="card-element2" class="StripeElement StripeElement--empty form-payment__date" style="font-size: .8rem;
-                            width: 100%;
-                            background-color: #F9F9FA;
-                            letter-spacing: 1px;">
+                    <div class="sectPay__wrap">
+                        <p>
+                            MM / RR
+                        </p>
+                        <div id="card-element2" class="StripeElement StripeElement--empty form-payment__date"></div>
                     </div>
-                    <div id="card-element3" class="StripeElement StripeElement--empty form-payment__cvv" style="font-size: .8rem;
-                            width: 100%;
-                            background-color: #F9F9FA;
-                            letter-spacing: 1px;">
+                    <div class="sectPay__wrap">
+                        <p>
+                            CVC / CVV
+                        </p>
+                        <div id="card-element3" class="StripeElement StripeElement--empty form-payment__cvv"></div>
                     </div>
                 </div>
                 <div class="sectPay__name">
-                    <p> Jméno na kartě </p><input class="name-inp" placeholder="*MARIA NOVAK" type="text"
-                        onclick="dataLayer.push({                            'event' : 'input_name',                            'category' : 'quiz pay',                            'action' : 'click',                            'label' : 'input_name'                         });">
+                    <p> Jméno na kartě </p><input class="name-inp cardHolder stripe-button" placeholder="*MARIA NOVAK" type="text"
+                        onclick="
+                        dataLayer.push({
+                            'event' : 'input_name',
+                            'category' : 'quiz pay',
+                            'action' : 'click',
+                            'label' : 'input_name'
+                        });
+                        ">
                 </div>
             </form>
         </div>
@@ -47,16 +54,27 @@
     </label>
 </div>
 </div> -->
+        <div id="payment-request-button-apple"></div>
+        <div id="payment-request-button"></div>
+
         <div class="sectPay__btn">
-            <button class="btn-pay content-button js-open-modal"
-                onclick="dataLayer.push({                    'event' : 'Subscribe',                    'category' : 'quiz pay',                    'action' : 'click',                    'label' : 'Subscribe'                 });"
-                data-modal="2">
+            <button
+                class="btn-pay content-button"
+                onclick="
+                    dataLayer.push({
+                        'event' : 'Subscribe',
+                        'category' : 'quiz pay',
+                        'action' : 'click',
+                        'label' : 'Subscribe'
+                    });
+                    onPayClick();
+                    "
+                >
                 <p> Zaplatit </p>
             </button><!-- <p class="cansel">Отменить <span class="br"></span> оплату</p> -->
         </div>
         <div id="card-errors" style="height: 20px;"></div>
-        <div id="payment-request-button-apple"></div>
-        <div id="payment-request-button"></div>
+
         <div class="wrapper-loader" style="margin-top: 20px;">
             <div class="lds-spinner">
                 <div></div>
