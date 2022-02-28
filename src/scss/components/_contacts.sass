@@ -1,0 +1,60 @@
+.contacts
+    @extend %section
+
+.test__title
+    @extend %test__title
+
+.test__text
+    text-align: center
+    font-size: 16px
+    line-height: 30px
+
+    @include adaptiv-value2('width',420,300,1)
+
+    margin-top: 10px
+
+.test__gift
+    display: grid
+    grid-template-columns: 50px 1fr
+    gap: 15px
+
+    background: rgba(116, 199, 78, 0.2)
+    border: 1px dashed #75C94E
+    box-sizing: border-box
+    border-radius: 10px
+
+    @include adaptiv-value2('width',400,310,1)
+
+    @include adaptiv-value2('margin-top',20,15,1)
+    @include adaptiv-value2('margin-bottom',30,20,1)
+
+
+    padding: 15px
+    padding-right: 5px
+    .test__text
+        text-align: left
+
+        width: auto
+
+        margin-top: 0
+
+
+.test__inputs
+
+    .test__input
+        @extend %inputText
+
+    .test__uncorrect
+        margin-top: 5px
+        visibility: hidden
+
+        color: red
+
+        transform: scale(0)
+        transition: .3s
+        &._active
+            visibility: visible
+            transform: scale(1)
+
+.test__button
+    @extend %button
