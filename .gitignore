@@ -1,6 +1,18 @@
-/node_modules
-/app
-/.vscode
+node_modules
+app
+.vscode
 
 
 package-lock.json
+.ecrc
+.editorconfig
+.htmlhintrc
+.stylelintrc.json
+no_index_in_url.htaccess
+web.config
+
+
+
+
+
+
