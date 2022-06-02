@@ -1,6 +1,6 @@
 Ссылка на исходные файлы:
 
-GitHub https://github.com/m4a1j9/vean__tt__all_geo
+GitHub (https://github.com/m4a1j9/detox_2)
 
 Для работы установите все пакеты и запустите приложение (npm run dev)
 
